@@ -53,13 +53,14 @@
                   Content="Cheked"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  IsChecked="True"
-                  />
+                  IsChecked="True"/>
+        
         <CheckBox Grid.Column="1"
                   FontSize="16"
                   Content="UnCheked"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"/>
+        
         <CheckBox Grid.Column="1"
                   FontSize="16"
                   Content="Indeterminate"
