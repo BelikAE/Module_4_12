@@ -5,8 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Module_4_12"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="200" Width="600
+        ">
+    <Window.Resources>
+        <Style TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <StackPanel>
+                            <Grid>
+                                <Rectangle Fill="White" Stroke="Black" Width="20" Height="20" RadiusX="3" RadiusY="3" />
+                                <Ellipse x:Name="elipse" Fill="Black" Width="10" Height="10" Opacity="0"/>
+                                <Path  x:Name="path" Stroke="Black" StrokeThickness="2.5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="20" Opacity="0">
+                                    <Path.Data>
+                                        <GeometryGroup>
+                                            <LineGeometry StartPoint="3,3" EndPoint="17,17" />
+                                            <LineGeometry StartPoint="17,3" EndPoint="3,17" />
+                                        </GeometryGroup>
+                                    </Path.Data>
+                                </Path>
+                            </Grid>
+                            <TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="path" Property="Opacity" Value="1"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsChecked" Value="{x:Null}"/>
+                                    <Condition Property="IsThreeState" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter TargetName="elipse" Property="Opacity" Value="1"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+    </Window.Resources>
+    <UniformGrid Columns="3">
+        <CheckBox Grid.Column="1"
+                  FontSize="16"
+                  Content="Cheked"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  IsChecked="True"
+                  />
+        <CheckBox Grid.Column="1"
+                  FontSize="16"
+                  Content="UnCheked"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"/>
+        <CheckBox Grid.Column="1"
+                  FontSize="16"
+                  Content="Indeterminate"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  IsChecked="{x:Null}"
+                  IsThreeState="True"/>
+    </UniformGrid>
 </Window>
